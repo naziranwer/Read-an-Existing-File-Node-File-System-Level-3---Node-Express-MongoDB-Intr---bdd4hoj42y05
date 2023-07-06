@@ -1,1 +1,22 @@
-Newton school is an online learning platform
+//Newton school is an online learning platform
+
+const fs = require('fs');
+
+function reader(filename, content) {
+  // Read the content of the file with the given filename
+  fs.readFile(filename, 'utf8', (err, data) => {
+    if (err) {
+      // If there's an error, log the error message
+      console.error(err);
+      content(null);
+    } else {
+      // If reading is successful, pass the content to the callback function
+      content(data);
+    }
+  });
+}
+
+// Test the reader function
+reader('myfile.txt', (fileContent) => {
+  console.log(fileContent);
+});
